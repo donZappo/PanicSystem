@@ -39,7 +39,7 @@ namespace PanicSystem
 		{
 			Statistic stat = mech.StatCollection.GetStatistic(mech.GetStringForArmorLocation((ArmorLocation)Location));
 			if(stat == null) {
-            			Log.TWL(0, "Can't get armor stat " + new Text(mech.DisplayName).ToString() + " location:" +Location, true);
+            			Logger.LogDebug("Can't get armor stat " + (mech.DisplayName) + " location:" +Location);
             			return 0;
           		}
 
@@ -74,17 +74,17 @@ namespace PanicSystem
 
         internal static float PercentLeftLeg(Mech mech) =>
             (mech.LeftLegStructure + mech.LeftLegArmor) /
-            (MaxStructureForLocation((int) ChassisLocations.LeftLeg) +
+            (mech.MaxStructureForLocation((int) ChassisLocations.LeftLeg) +
              MaxArmorForLocation(mech, (int) ArmorLocation.LeftLeg));
 
         internal static float PercentRightLeg(Mech mech) =>
             (mech.RightLegStructure + mech.RightLegArmor) /
-            (MaxStructureForLocation((int) ChassisLocations.RightLeg) +
+            (mech.MaxStructureForLocation((int) ChassisLocations.RightLeg) +
              MaxArmorForLocation(mech, (int) ArmorLocation.RightLeg));
 
         internal static float PercentHead(Mech mech) =>
             (mech.HeadStructure + mech.HeadArmor) /
-            (MaxStructureForLocation((int) ChassisLocations.Head) +
+            (mech.MaxStructureForLocation((int) ChassisLocations.Head) +
              MaxArmorForLocation(mech, (int) ArmorLocation.Head));
 
         // check if panic roll is possible
